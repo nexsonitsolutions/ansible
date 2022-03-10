@@ -1,0 +1,14 @@
+---
+- name: login to dockerhub and push an image to hub.docker.com
+  hosts: all
+  tasks:
+   - name: login to dockerhub
+     docker_login:
+      username: analyticsbd
+      password: Pras2488#
+      #      email: bdanalytics@hotmail.com
+   - name: push an image
+     docker_image:
+      name: analyticsbd/alp1
+      push: yes
+      source: local

@@ -1,0 +1,9 @@
+---
+- name: playbook for deleting 5 nginx containers
+  hosts: all
+  tasks: 
+   - name: delete containers
+     docker_container:
+      name: "nginx_c{{item}}"
+      state: absent
+     with_sequence: count=5

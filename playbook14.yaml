@@ -1,0 +1,14 @@
+---
+- name: install git and print the output 
+  hosts: all
+  tasks:
+   - name: install git
+     apt:
+      name: git
+      state: present
+      update_cache: yes
+     register: output
+   - name: print the result
+     debug:
+      var: output
+...

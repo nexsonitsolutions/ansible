@@ -1,0 +1,14 @@
+---
+- name: setup docker, install python pip on all managed nodes
+  hosts: all
+  tasks: 
+   - name: install python pip
+     apt:
+      name: python3-pip
+      state: present
+   - name: install docker and run docker.py script
+     shell: "{{item}}"
+     with_items:
+      - curl -fsSL https://get.docker.com -o get-docker.sh
+      - sh get-docker.sh
+      - pip install docker.py

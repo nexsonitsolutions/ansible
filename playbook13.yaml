@@ -1,0 +1,13 @@
+---
+- name: implementing when conditions
+  hosts: all
+  vars:
+   - num: 10
+   - package: git
+  tasks:
+   - name: install git
+     apt:
+      name: "{{package}}"
+      state: present
+     when:
+      num==10

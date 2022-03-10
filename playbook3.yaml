@@ -1,0 +1,16 @@
+---
+- name: fetch a file from mn1 to controller
+  hosts: 172.31.62.195
+  tasks:
+   - name: fetch a file
+     fetch:
+      src: /etc/passwd
+      dest: /home/ubuntu
+- name: copy a file from controller to mn2
+  hosts: 172.31.62.13
+  tasks:
+   - name: copy a file
+     copy:
+      src: /home/ubuntu/172.31.62.195/etc/passwd
+      dest: /tmp
+...

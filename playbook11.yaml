@@ -1,0 +1,10 @@
+---
+- name: install packages (java, tomcat, git, maven, tree)
+  hosts: all
+  tasks:
+   - name: install packages
+     apt: 
+      name: ["default-jdk", "tomcat9", "git", "maven", "tree"]
+      state: present
+      update_cache: yes
+...

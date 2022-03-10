@@ -1,0 +1,9 @@
+---
+- name: this playbook takes value from a variable and behaves dynamically
+  hosts: 172.31.62.195
+  tasks:
+   - name: install package specified in a variable
+     apt:
+      name: "{{package2}}"
+      state: "{{mystate}}"
+      update_cache: yes

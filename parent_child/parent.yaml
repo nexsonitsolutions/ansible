@@ -1,0 +1,10 @@
+--- 
+- name: install java and git on all managed nodes
+  hosts: all
+  tasks:
+   - name: call child elements
+     include: "{{item}}"
+     with_items:
+      - child1.yaml
+      - child3.yaml
+...

@@ -1,0 +1,25 @@
+---
+- name: implemeting docker compose (wordpress linked to mysql container)
+  hosts: all
+  tasks:
+   - name: start mysql as a container
+     docker_container:
+      image: mysql
+      name: mydb
+      env:
+       MYSQL_ROOT_PASSWORD: "1234"
+   - name: start wordpress as container and link to mysql
+     docker_container:
+      image: wordpress
+      name: mywp
+      ports:
+       - 9090:80
+      links:
+       - mydb
+   - name: delete the configuration
+     docker_container:
+      name: ["mydb", "mywp"]
+      state: absent
+     tags:
+      - delete_config
+...

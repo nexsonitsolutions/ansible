@@ -1,0 +1,8 @@
+---
+- name: delete images manually
+  hosts: all
+  tasks:
+   - name: delete images
+     docker_image:
+      name: ["mysql", "wordpress"]
+      state: absent

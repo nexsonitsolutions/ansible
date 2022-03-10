@@ -1,0 +1,16 @@
+---
+- name: install and uninstall packages (java, tomcat  | git, maven, tree)
+  hosts: all
+  tasks:
+   - name: install packages
+     apt: 
+      name: "{{item.a}}"
+      state: "{{item.b}}"
+      update_cache: "{{item.c}}"
+     with_items:
+      - {a: default-jdk, b: present, c: yes}
+      - {a: tomcat9, b: present, c: yes}
+      - {a: git, b: absent, c: no}
+      - {a: maven, b: absent, c: no}
+      - {a: tree, b: absent, c: no}
+...

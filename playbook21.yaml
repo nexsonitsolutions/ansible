@@ -1,0 +1,34 @@
+---
+- name: install packages (java, tomcat, git, maven, tree)
+  hosts: 172.31.62.195
+  tasks:
+   - name: install java
+     apt: 
+      name: default-jdk
+      state: present
+      update_cache: yes
+   - name: install tomcat
+     apt: 
+      name: tomcat9
+      state: present
+      update_cache: yes
+   - name: install git
+     apt:
+      name: git
+      state: present
+      update_cache: yes
+     tags:
+      git_installation
+   - name: install maven
+     apt: 
+      name: maven
+      state: present
+      update_cache: yes
+   - name: install tree
+     apt: 
+      name: tree
+      state: present
+      update_cache: yes
+     tags:
+      tree_installation
+...

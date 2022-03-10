@@ -1,0 +1,18 @@
+---
+- name: create user | if user is not present and update password
+  hosts: all
+  tasks:
+   - name: create a user
+     user:
+      name: divya
+     register: result
+   - name: print the result
+     debug:
+      var: result
+   - name: update the password of the user
+     user: 
+      name: divya
+      password: 123456
+     when:
+      result.changed==true
+...

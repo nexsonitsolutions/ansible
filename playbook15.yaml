@@ -1,0 +1,11 @@
+---
+- name: print the values  | identify whether a file is present or not
+  hosts: all
+  tasks:
+   - name: check if a file is present or not
+     stat:
+      path: /variable
+     register: output
+   - name: print the output
+     debug:
+      var: output

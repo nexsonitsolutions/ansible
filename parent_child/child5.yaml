@@ -1,0 +1,6 @@
+- name: install tree
+  apt:
+   name: tree
+   state: present
+   update_cache: yes
+

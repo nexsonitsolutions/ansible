@@ -1,0 +1,17 @@
+---
+- name: identify whether a directory is present. If present, create a file in that respective directory
+  hosts: all
+  tasks:
+   - name: check if a directory is present
+     stat:
+      path: /temporary
+     register: output
+   - name: print the output
+     debug:
+      var: output
+   - name: create a file if a directory is present
+     file:
+      name: /tmp/mynewfile.txt
+      state: touch 
+     when:
+      output.stat.exists==true

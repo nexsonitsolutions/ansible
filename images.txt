@@ -1,0 +1,4 @@
+wordpress
+mysql
+tomcat
+nginx
